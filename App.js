@@ -37,9 +37,12 @@ function Item({ item }) {
 
 export default function App() {
   return (
-    <View style={styles.container1}>
-      <Image source={DATA[0].pic} style={styles.image} />
-      {/* <Text style={styles.title}>{item.title}</Text> */}
+    <View style={styles.container}>
+      <FlatList
+        data={DATA}
+        renderItem={({ item }) => <Item item={item} />}
+        keyExtractor={item => item.id}
+      />
     </View>
   );
 }
@@ -50,8 +53,6 @@ const styles = StyleSheet.create({
     marginTop: Constants.statusBarHeight,
   },
   container1: {
-    flex: 1,
-    marginTop: Constants.statusBarHeight,
         backgroundColor: '#f2f2f2',
         alignItems: 'center',
         justifyContent: 'center'
